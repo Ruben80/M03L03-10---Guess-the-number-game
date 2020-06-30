@@ -1,19 +1,33 @@
-let naam = prompt("Welkom! Wat is je naam?");
+var userNumber = 1;
+var counter = 0;
+var maxTries = 5;
+var triesLeft = maxTries;
+var randomNumber = Math.floor(Math.random() * userNumber + 1);
 
-alert("Hey " + naam + " ! Klik op OK om verder te gaan of druk op Enter");
+var name = prompt("Welkom! Wat is je naam?");
+alert("Hey " + name + " ! Klik op OK om verder te gaan of druk op Enter");
 
-let guess = prompt(
-  "Voer een nummer in van 0 tot 25 om te beginnen met raden..."
-);
+while (guess !== randomNumber) {
+  var guess = prompt(
+    "Voer een nummer in van 1 tot " + userNumber + " om te beginnen met raden...");
+    counter += 1;
+    triesLeft -= 1;
 
-var x = Math.floor(Math.random() * 1 + 1);
+    if (counter > maxTries) {      
+      document.write("Je hebt geen pogingen meer over. Druk op F5 om nogmaals te spelen.");
+      break
+    };
 
-console.log(x);
-console.log(guess);
+    if (guess == randomNumber) {
+          alert("Gefeliciteerd je hebt gewonnen");
+          document.write("<p> Het juiste nummer was " + randomNumber + "." + "</p>");
+          document.write("<p> Het kostte je " + counter + " poging(en) om het te raden." + "</p>");
+          alert("Dag " + name + " tot de volgende keer!");          
+          break
+        } else {           
+            alert("Helaas het nummer is niet juist, probeer het nog eens");
+            alert("Je hebt nog " + triesLeft + " pogingen over!");
+          }  
+  } 
 
-if (x == guess) {
-  alert("Gefeliciteerd je hebt gewonnen");
-  alert("Dag " + naam + " Tot de volgende keer!");
-} else {
-  alert("Helaas het nummer is niet juist, probeer het nog eens");
-}
+  console.log("program complete");
